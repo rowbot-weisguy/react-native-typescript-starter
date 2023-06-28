@@ -3139,7 +3139,7 @@
     mime "3.0.0"
     tiny-invariant "^1.2.0"
 
-"@thirdweb-dev/react-native-compat@^0.2.14":
+"@thirdweb-dev/react-native-compat@0.2.14":
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/react-native-compat/-/react-native-compat-0.2.14.tgz#3087127bd850bc517669cf53037c2f607f8490e3"
   integrity sha512-heyyR2mBwS7MU368U9aDzl1e5otzbar0zAQdt1w6B2SyCI+jNNclr6ZyrzMXAmXQbHBywVIcFAOKKs/dT0VImQ==
@@ -3150,7 +3150,7 @@
     big-integer "^1.6.51"
     react-native-get-random-values "^1.8.0"
 
-"@thirdweb-dev/react-native@^0.2.14":
+"@thirdweb-dev/react-native@0.2.14":
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/react-native/-/react-native-0.2.14.tgz#1d3ca499982f3b09e1c59d2b06b618ba7fa5ec5c"
   integrity sha512-HZUYeG5NcjbpmDwYc1omvKY2HOh4wwhTFV8DECUgH24NRi2PgVFoPiCYgmu4bWk9WAUlfXk9A5PQjIfSL6xjzw==
@@ -10615,6 +10615,11 @@ react-native-randombytes@^3.6.1:
   dependencies:
     buffer "^4.9.1"
     sjcl "^1.0.3"
+
+react-native-safe-area-context@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.6.3.tgz#f06cfea05b1c4b018aa9758667a109f619c62b55"
+  integrity sha512-3CeZM9HFXkuqiU9HqhOQp1yxhXw6q99axPWrT+VJkITd67gnPSU03+U27Xk2/cr9XrLUnakM07kj7H0hdPnFiQ==
 
 react-native-svg@^13.8.0, react-native-svg@^13.9.0:
   version "13.9.0"
