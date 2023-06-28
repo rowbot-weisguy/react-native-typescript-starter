@@ -1,12 +1,13 @@
 import {
   ConnectWallet,
-  localWallet,
   metamaskWallet,
-  rainbowWallet,
   ThirdwebProvider,
+  useAddress,
+  useLogin,
 } from '@thirdweb-dev/react-native';
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -18,14 +19,20 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 const App = () => {
   return (
     <ThirdwebProvider
-      activeChain="mumbai"
-      supportedWallets={[metamaskWallet(), rainbowWallet(), localWallet()]}>
+      activeChain="localhost"
+      authConfig={{
+        domain: 'http://localhost:3000',
+        authUrl: 'http://localhost:4300/api/auth',
+      }}
+      supportedWallets={[metamaskWallet()]}>
       <AppInner />
     </ThirdwebProvider>
   );
 };
 
 const AppInner = () => {
+  const address = useAddress();
+  const {login} = useLogin();
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -36,11 +43,17 @@ const AppInner = () => {
     ...styles.heading,
   };
 
+  const handleLogin = async () => {
+    const token = await login();
+    console.log('logged in, token', token);
+  };
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <View style={styles.view}>
         <Text style={textStyles}>React Native thirdweb starter</Text>
         <ConnectWallet />
+        {address && <Button onPress={handleLogin} title="Login" />}
       </View>
     </SafeAreaView>
   );
