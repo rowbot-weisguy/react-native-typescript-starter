@@ -3,6 +3,7 @@ import {
   metamaskWallet,
   ThirdwebProvider,
   useAddress,
+  useDisconnect,
   useLogin,
   useLogout,
   useUser,
@@ -36,6 +37,7 @@ const AppInner = () => {
   const address = useAddress();
   const {login} = useLogin();
   const {logout} = useLogout();
+  const disconnect = useDisconnect();
   const {user, isLoggedIn} = useUser();
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
@@ -45,6 +47,11 @@ const AppInner = () => {
   const textStyles = {
     color: isDarkMode ? Colors.white : Colors.black,
     ...styles.heading,
+  };
+
+  const handleDisconnect = async () => {
+    await disconnect();
+    console.log('disconnected wallet');
   };
 
   const handleLogin = async () => {
@@ -62,6 +69,7 @@ const AppInner = () => {
       <View style={styles.view}>
         <Text style={textStyles}>React Native thirdweb starter</Text>
         <ConnectWallet />
+        {address && <Button onPress={handleDisconnect} title="Disconnect" />}
         {address && !isLoggedIn && (
           <Button onPress={handleLogin} title="Login" />
         )}
