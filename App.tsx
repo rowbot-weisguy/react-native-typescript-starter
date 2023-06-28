@@ -4,6 +4,8 @@ import {
   ThirdwebProvider,
   useAddress,
   useLogin,
+  useLogout,
+  useUser,
 } from '@thirdweb-dev/react-native';
 import React from 'react';
 import {
@@ -33,6 +35,8 @@ const App = () => {
 const AppInner = () => {
   const address = useAddress();
   const {login} = useLogin();
+  const {logout} = useLogout();
+  const {user, isLoggedIn} = useUser();
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -48,12 +52,25 @@ const AppInner = () => {
     console.log('logged in, token', token);
   };
 
+  const handleLogout = async () => {
+    await logout();
+    console.log('logged out');
+  };
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <View style={styles.view}>
         <Text style={textStyles}>React Native thirdweb starter</Text>
         <ConnectWallet />
-        {address && <Button onPress={handleLogin} title="Login" />}
+        {address && !isLoggedIn && (
+          <Button onPress={handleLogin} title="Login" />
+        )}
+        {isLoggedIn && (
+          <>
+            <Text>User: {JSON.stringify(user?.data)}</Text>
+            <Button onPress={handleLogout} title="Logout" />
+          </>
+        )}
       </View>
     </SafeAreaView>
   );
