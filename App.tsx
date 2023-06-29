@@ -1,7 +1,10 @@
 import {
   ConnectWallet,
+  magicWallet,
   metamaskWallet,
+  rainbowWallet,
   ThirdwebProvider,
+  trustWallet,
   useAddress,
   useDisconnect,
   useLogin,
@@ -27,7 +30,12 @@ const App = () => {
         domain: 'http://localhost:3000',
         authUrl: 'http://localhost:4300/api/auth',
       }}
-      supportedWallets={[metamaskWallet()]}>
+      supportedWallets={[
+        metamaskWallet(),
+        magicWallet({apiKey: 'pk_live_2295D51243E4AFB1'}),
+        rainbowWallet(),
+        trustWallet(),
+      ]}>
       <AppInner />
     </ThirdwebProvider>
   );
