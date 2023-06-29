@@ -31,8 +31,8 @@ const App = () => {
         authUrl: 'http://localhost:4300/api/auth',
       }}
       supportedWallets={[
-        metamaskWallet(),
         magicWallet({apiKey: 'pk_live_2295D51243E4AFB1'}),
+        metamaskWallet(),
         rainbowWallet(),
         trustWallet(),
       ]}>
