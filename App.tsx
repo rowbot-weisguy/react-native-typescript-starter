@@ -12,17 +12,13 @@ import {
   useUser,
 } from '@thirdweb-dev/react-native';
 import React from 'react';
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Button, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
+  /**
+   * ThirdwebProvider implicitly wraps the app in a SafeAreaView
+   * */
   return (
     <ThirdwebProvider
       activeChain="localhost"
@@ -73,7 +69,7 @@ const AppInner = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <View style={backgroundStyle}>
       <View style={styles.view}>
         <Text style={textStyles}>React Native thirdweb starter</Text>
         <ConnectWallet />
@@ -88,7 +84,7 @@ const AppInner = () => {
           </>
         )}
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
